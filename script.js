@@ -10,7 +10,8 @@ function playround(playerSelection,ComputerSelection) {
     let res;
     if (ps===cs){
         res="tie";
-        return 'its a tie';
+        console.log('its a tie');
+        return res;
     }
     else{
         if(ps=="rock"){
@@ -25,14 +26,39 @@ function playround(playerSelection,ComputerSelection) {
         
     }
     if (res==ps){
-        return `you Won! ${playerSelection} beats ${ComputerSelection}`;
+        console.log(`you Won! ${playerSelection} beats ${ComputerSelection}`);
+        
     }
     else{
-        return `you Lost! ${ComputerSelection} beats ${playerSelection}`;
+        console.log(`you Lost! ${ComputerSelection} beats ${playerSelection}`);
+        
     }
+    return res;
     
     
 }
-const player="paper";
-const computer=getComputerChoice();
+function game(){
+    let yourscore=0;
+    let compscore=0;
+    for(let i=0;i<5;i++){
+        let player=prompt("your choice");
+        let computer=getComputerChoice();
+       
+        let result=playround(player,computer);
+        if (result==player.toLowerCase()){
+            yourscore+=1;
+        }else if(result=="tie"){
+            yourscore+=1;
+            compscore+=1;
+        }
+        else{
+            compscore+=1;
+        }
+    }
+    console.log(`your score ${yourscore}`);
+    console.log(`computer score ${compscore}`);
+    return (yourscore>compscore)?"you won computer lost":(yourscore<compscore)?"you lost computer won":"you both won";
+
+}
+
 
