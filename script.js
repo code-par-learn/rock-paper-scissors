@@ -23,6 +23,7 @@ function playround(playerSelection,ComputerSelection) {
         else{
             res=(cs=="rock")?cs:ps;
         }
+       
         
     }
     if (res==ps){
@@ -42,6 +43,17 @@ function game(){
     let compscore=0;
     for(let i=0;i<5;i++){
         let player=prompt("your choice");
+        let pschoice=player.toLowerCase();
+        let error=(pschoice=="paper")?"no":(pschoice=="rock")?"no":(pschoice=="scissors")?"no":"yes";
+        
+        while (error=="yes"){
+            console.log("you entered the wrong choice");
+            player=prompt("your choice: ");
+            pschoice=player.toLowerCase();
+            error=(pschoice=="paper")?"no":(pschoice=="rock")?"no":(pschoice=="scissors")?"no":"yes";
+           
+        }
+    
         let computer=getComputerChoice();
        
         let result=playround(player,computer);
